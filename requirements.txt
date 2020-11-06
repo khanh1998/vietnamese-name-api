@@ -1,5 +1,5 @@
 -f https://download.pytorch.org/whl/torch_stable.html
 flask
 gunicorn
-torch==1.7.0+cpu
+torch==1.6.0+cpu
 numpy

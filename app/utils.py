@@ -1,5 +1,15 @@
-import torch
 import math
+from app.Model import LSTM_classifier
+import torch
+import os
+
+root_dir = os.getcwd()
+model_folder = f'app/static/rnn-character-level'
+print(f'loading model from: {model_folder}')
+cpu = torch.device('cpu')
+
+model = LSTM_classifier(hidden_size=256)
+model.load_state_dict(torch.load(model_folder, map_location=cpu))
 max_length = 25
 
 alpha_bet = ' aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ'
@@ -41,7 +51,7 @@ def lineToTensor(line):
     tensor[index][pad_token_id] = 1
   return tensor
 
-def test_model(names, model, device):
+def test_model(names):
   results = []
   for name in names:
     input_test = lineToTensor(name.lower())
@@ -50,11 +60,11 @@ def test_model(names, model, device):
     pad_tensor[:,pad_token_id] = 1
     input = torch.cat((input_test, pad_tensor), dim=0)
     input = input.unsqueeze(0)
-    input = input.to(device)
+    input = input.to(cpu)
     model.eval()
     with torch.no_grad():
       output = model(input)
-      exp = torch.randn(1, 2).fill_(math.exp(1)).to(device)
+      exp = torch.randn(1, 2).fill_(math.exp(1)).to(cpu)
       res = torch.pow(exp, output)
       maxIdx = torch.argmax(res)
       gender = 'nữ' if maxIdx == 0 else 'nam'
