@@ -5,7 +5,7 @@ import torch
 import os
 
 root_dir = os.getcwd()
-model_folder = f'{root_dir}/app/static/rnn-character-level'
+model_folder = f'app/static/rnn-character-level'
 print(model_folder)
 cpu = torch.device('cpu')
 
