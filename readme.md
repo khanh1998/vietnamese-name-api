@@ -35,15 +35,15 @@ Response:
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/10TScnpluI6Cgfw3wqb0moDWxHXxRFvD3)
 Character level base, four layers LSTM.
 Here a some generated names by the model with seed `b`:
->bùi chí công<pad>
-bùi kiên giang<pad>
-bùi lọ khuê<pad>
-bùi sơn lâm<pad>
-bùi bảo lễ<pad>
-bùi ngọc khanh<pad>
-bùi thanh hoa<pad>
-bùi văn nhật<pad>
-bùi thành nhung<pad>
-bùi hoài giang<pad>
+bùi chí công<pad>  
+bùi kiên giang<pad>  
+bùi lọ khuê<pad>  
+bùi sơn lâm<pad>  
+bùi bảo lễ<pad>  
+bùi ngọc khanh<pad>  
+bùi thanh hoa<pad>  
+bùi văn nhật<pad>  
+bùi thành nhung<pad>  
+bùi hoài giang<pad>  
 
 The model has not deployed yet.
